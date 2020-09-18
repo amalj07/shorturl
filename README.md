@@ -11,3 +11,8 @@ go get github.com/amljs/shorturl
 ```
 url, err := shorturl.CreateShortURL(longurl, baseurl)
 ```
+
+### Custom shorturls
+```
+url, err := shorturl.CreateShortURL(longurl, baseurl, shortid)
+```
