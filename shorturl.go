@@ -53,6 +53,7 @@ func ShortUrl(params ...interface{}) (string, error)  {
 
 	shortid = shortid + string(basestring[r3])
 
+	shorturl := params[1].(string) + "/" + shortid
 
-	return shortid, nil
+	return shorturl, nil
 }
