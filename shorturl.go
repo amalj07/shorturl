@@ -1,6 +1,12 @@
 package shorturl
 
-import "net/url"
+import (
+	"math/rand"
+	"net/url"
+	"os"
+	"strconv"
+	"time"
+)
 
 func ShortUrl(params ...interface{}) (string, error)  {
 
@@ -16,5 +22,26 @@ func ShortUrl(params ...interface{}) (string, error)  {
 		return "", err
 	}
 
-	return "", nil
+	rand.Seed(time.Now().UTC().UnixNano())
+
+	original := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_"
+
+	basestring := []rune(original)
+
+	min1 := 10
+	max1 := 26
+
+	min2 := 27
+	max2 := 54
+
+	r1 := rand.Intn(max1 - min1) + min1
+	r2 := rand.Intn(max2 - min2) + min2
+	s := strconv.Itoa(time.Now().Second())[:1]
+	n := strconv.Itoa(time.Now().Nanosecond())[2:4]
+	p := strconv.Itoa(os.Getpid())[:2]
+
+	unum := n + p + s + string(basestring[r1]) + string(basestring[r2])
+
+
+	return unum, nil
 }
