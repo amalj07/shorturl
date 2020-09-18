@@ -1,6 +1,7 @@
 package shorturl
 
 import (
+	"fmt"
 	"math/rand"
 	"net/url"
 	"os"
@@ -8,7 +9,9 @@ import (
 	"time"
 )
 
-func ShortUrl(params ...interface{}) (string, error)  {
+func CreateShortURL(params ...interface{}) (string, error)  {
+
+	fmt.Println(params[0])
 
 	//Check if the Long URL is valid
 	_, err := url.ParseRequestURI(params[0].(string))
