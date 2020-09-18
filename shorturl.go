@@ -36,12 +36,23 @@ func ShortUrl(params ...interface{}) (string, error)  {
 
 	r1 := rand.Intn(max1 - min1) + min1
 	r2 := rand.Intn(max2 - min2) + min2
+	r3 := rand.Intn(max2 - min2) + min2
 	s := strconv.Itoa(time.Now().Second())[:1]
 	n := strconv.Itoa(time.Now().Nanosecond())[2:4]
 	p := strconv.Itoa(os.Getpid())[:2]
 
-	unum := n + p + s + string(basestring[r1]) + string(basestring[r2])
+	unum := n + p + s
+
+	shortid := ""
+	shortid = shortid  + string(basestring[r1]) + string(basestring[r2])
+
+	for _, v := range unum  {
+		u, _ := strconv.Atoi(string(v))
+		shortid = shortid + string(basestring[u])
+	}
+
+	shortid = shortid + string(basestring[r3])
 
 
-	return unum, nil
+	return shortid, nil
 }
