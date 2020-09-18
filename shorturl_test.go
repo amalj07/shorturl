@@ -20,3 +20,12 @@ func TestShortUrl(t *testing.T) {
 		generated[shortid] = true
 	}
 }
+
+func TestCustomShortUrl(t *testing.T) {
+	_, err := CreateShortURL("https://google.com", "http://localhost:3000", "testshortid" )
+
+	if err != nil {
+		t.Error(err)
+	}
+
+}
