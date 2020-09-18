@@ -1,5 +1,5 @@
 # shorturl
-Url shortener written in Golang
+Url shortener written in Golang, create custom shorturl by passing custom shortids
 
 # Install
 ```
